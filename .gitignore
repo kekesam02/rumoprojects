@@ -31,3 +31,5 @@ Thumbs.db
 *.orig
 
 .metadata
+dubbo
+/dubbo/**
