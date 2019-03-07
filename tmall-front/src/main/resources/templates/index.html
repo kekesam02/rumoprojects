@@ -516,7 +516,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="yui3-u Center banerArea">
+				
+				
+				
+				<div class="yui3-u Center banerArea" id="banner_box">
 					<!--banner轮播-->
 					<div id="myCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
 					  <ol class="carousel-indicators">
@@ -525,25 +528,18 @@
 					    <li data-target="#myCarousel" data-slide-to="2"></li>
 					  </ol>
 					  <div class="carousel-inner">
-					    <div class="active item">
-					    <a href="http://baidu2.wypxj.com/">
-					    	<img src="img/banner1.jpg"  />
+					    <div class="item" :class="index==0?'active':''" v-for="(banner,index) in banners">
+					    <a v-bind:href="banner.url">
+					    	<img v-bind:src="banner.pic" />
 					      </a>
-					    </div>
-					    <div class="item">
-						 <a href="http://baidu2.wypxj.com/">
-						<img src="img/banner2.jpg"  />
-					     </a>
-					    </div>
-					    <div class="item">
-						 <a href="http://baidu2.wypxj.com/">
-						<img src="img/banner3.jpg"  />
-						</a>
-					     
 					    </div>
 					  </div><a href="#myCarousel" data-slide="prev" class="carousel-control left">‹</a><a href="#myCarousel" data-slide="next" class="carousel-control right">›</a>
 					</div>
 				</div>
+				
+				
+				
+				
 				<div class="yui3-u Right">
 					<div class="news">
 						<h4><em class="fl">乐优选购快报</em><span class="fr tip">更多 ></span></h4>
@@ -1381,6 +1377,34 @@
 </script>
 <!--侧栏面板结束-->
 <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/vue/vue.js"></script>
+<script type="text/javascript" src="js/vue/vue-resource.js"></script>
+
+<script>
+	var app = new Vue({
+		el:"#banner_box",
+		data:{banners:[],cid:1},
+		created:function(){
+			this.init();
+		},
+		methods:{
+			init:function(){
+				var cid = this.$data.cid;
+				this.$http.get("findContents?cid="+cid).then(function(result){
+					if(result.status==200 && result.body){
+						this.$data.banners = result.body;
+					}else{
+						//
+					}
+				}).catch(function(e){
+					console.log("error",e)
+				});
+			}
+		}
+	})
+
+</script>	
+
 <script type="text/javascript">
 $(function(){
 	$("#service").hover(function(){

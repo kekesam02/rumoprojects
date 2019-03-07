@@ -11,8 +11,8 @@ import com.itbooking.vo.Params;
 @Service
 public class ItemDubboService {
 	
-	// dubbo服务的引用
-	@Reference(check=false)
+	// dubbo服务的引用  @Reference 服务的消费方 3
+	@Reference(check=false,timeout=5000,retries=2)
 	private IItemService itemService;
 	
 	
