@@ -32,10 +32,10 @@ public class ContentController {
 		}
 	}
 	
-//	@GetMapping("/deleteContents")
-//	public String deleteContents() {
-//		contentDubboService.deleteContents(1L);
-//		return "success";
-//	}
+	@GetMapping("/deleteContents")
+	public String deleteContents() {
+		contentDubboService.deleteContents(1L);
+		return "success";
+	}
 	
 }

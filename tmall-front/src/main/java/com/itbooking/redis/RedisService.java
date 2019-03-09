@@ -228,8 +228,7 @@ public class RedisService {
 		} else if (clazz == long.class || clazz == Long.class) {
 			return (T) Long.valueOf(str);
 		} else {
-			//return JsonUtil.string2Obj(str, List.class, clazz);
-			return JSON.toJavaObject(JSON.parseObject(str), clazz);//user.class List<Content
+			return JSON.toJavaObject(JSON.parseObject(str), clazz);
 		}
 	}
 
