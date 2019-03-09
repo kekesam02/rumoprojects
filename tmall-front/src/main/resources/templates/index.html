@@ -522,10 +522,8 @@
 				<div class="yui3-u Center banerArea" id="banner_box">
 					<!--banner轮播-->
 					<div id="myCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
-					  <ol class="carousel-indicators">
-					    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					    <li data-target="#myCarousel" data-slide-to="1"></li>
-					    <li data-target="#myCarousel" data-slide-to="2"></li>
+					  <ol class="carousel-indicators" >
+					    <li data-target="#myCarousel"  v-for="(banner,index) in banners"   :data-slide-to="index" :class="index==0?'active':''"></li>
 					  </ol>
 					  <div class="carousel-inner">
 					    <div class="item" :class="index==0?'active':''" v-for="(banner,index) in banners">

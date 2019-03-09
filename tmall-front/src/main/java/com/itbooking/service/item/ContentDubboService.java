@@ -1,14 +1,20 @@
 package com.itbooking.service.item;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.itbooking.pojo.Content;
+import com.itbooking.redis.BannerKey;
+import com.itbooking.redis.RedisService;
 import com.itbooking.service.content.IContentService;
+import com.itbooking.util.JsonUtil;
+import com.itbooking.util.TmStringUtils;
 
 /**
  * 
@@ -21,12 +27,23 @@ import com.itbooking.service.content.IContentService;
  *
  */
 @Service
+@CacheConfig
 public class ContentDubboService {
+	
+	private Logger log = LoggerFactory.getLogger(ContentDubboService.class);
 	
 	@Reference(check=false)
 	private IContentService contentService;
+	@Autowired
+	private RedisService redisService;
+	
 	
 	/**
+	 * 
+	 *  1:：有什么开发部不利于维护的代码
+	 *  2: 有没有更好的解决方案，
+	 *  3： redis可靠吗？---高并发
+	 *  
 	 * 根据分类id查询对应的轮展数据信息
 	 * 方法名：findContents<br/>
 	 * 创建人：xuchengfeifei <br/>
@@ -40,8 +57,26 @@ public class ContentDubboService {
 	 * @since  1.0.0<br/>
 	 */
 	public List<Content> findContents(Long categoryId,int pageNo,int pageSize){
-		if(categoryId == null)return null;
-		return contentService.findContentsByCategoryId(categoryId, pageNo, pageSize);
+		try {
+			if(categoryId == null)return null;
+			// 1 : 先到缓存中去查询一次，看是否有轮播图相关数据
+			List<Content> contents  = redisService.getList(BannerKey.banners, "findContents", Content.class);
+			// 2： 如果缓存中有数据
+			if(contents!=null && contents.size()>0) {
+				log.info("------------------------进入缓存了.数据是:{}",contents);
+				//4 : 将缓存中的数据，json转换list
+				return contents;
+			}else {
+				log.info("------------------------进入数据库:{，查询放入缓存中}",contents);
+				// 查询数据
+				contents = contentService.findContentsByCategoryId(categoryId, pageNo, pageSize);
+				//3: 放入缓存中---string contents 是一个集合对象
+				redisService.set(BannerKey.banners,"findContents",contents);
+			}
+			return contents;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
-	
 }

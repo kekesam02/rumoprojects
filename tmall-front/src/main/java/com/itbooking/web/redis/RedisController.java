@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.itbooking.redis.RedisService;
+import com.itbooking.redis.SpringBootRedisService;
 
 @RestController
 @RequestMapping("/redis")
@@ -14,7 +14,7 @@ public class RedisController {
 	
 	
 	@Autowired
-	private RedisService redisService;
+	private SpringBootRedisService redisService;
 	
 	
 	// 第三节课： springboot 将starter机制
