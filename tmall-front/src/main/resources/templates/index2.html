@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<h1>index</h1>
+	<script src="js/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function(){
+			//loadApi();
+		})
+		
+		//XMLHttpRequest cannot load http://localhost:8080/api/item/category. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://localhost:8081' is therefore not allowed access.
+		//出现跨域问题
+		/* function loadApi(){
+			$.ajax({
+				type:"GET",
+				url:"http://localhost:8080/api/item/category",
+				dataType:"json",
+				success:function(data){
+					console.log(data);
+				}
+			});
+		} */
+		
+		function loadData(json){
+			console.log(json);
+		}
+		
+	</script>
+	<script src="http://localhost:8080/api/item/category/json"></script>
+</body>
+</html>
