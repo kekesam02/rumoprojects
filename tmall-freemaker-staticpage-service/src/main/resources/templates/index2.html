@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<#include "common/header.html"/>
+</head>
+<body>
+<#include "common/nav.html"/>
+	<h1>Hello Freemaker!!!</h1>
+	<!-- <div>html注释</div>-->
+	<#-- 我只是一个注释，我不会有任何输出  -->
+	${name},你好。${message} 
+	=====================	
+	${character(1)} ===
+	${character(2)} ===
+	${character(3)} ===
+	===================
+	
+	<#if goodsList??>
+		<!-- gt lt -->
+		<!-- gte lte -->
+		<#list goodsList as good >
+			<li style="background:pink">
+				${good_index + 1} :
+				<#if good.name??>${good.name}<#else>没有名字</#if>
+				${(good.name)!"没有名字"}
+				===${good.price}===${good.price?string('#.#')}====
+				==============***${dateFormat(good.date,"yyyy-MM-dd HH:mm")}**===========
+				${good.date?date}
+				${good.date?time}
+				${good.date?datetime}
+				${good.date?string("yyyy年MM月dd日 HH:mm")}
+				===小计：${good.price * good.num}====${(good.price>3)?string("大于","不大于")}
+			</li>
+		</#list>
+	</#if>
+	
+	<#include "common/footer.html"/>
+</body>
+</html>

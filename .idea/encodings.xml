@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tmall-activemq-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tmall-admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tmall-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tmall-common-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tmall-content-service-manager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tmall-editor-mkdown" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tmall-freemaker-staticpage-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tmall-front" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tmall-items-service-manager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tmall-keyword-reload-manager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tmall-pojo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tmall-search-engin-front" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

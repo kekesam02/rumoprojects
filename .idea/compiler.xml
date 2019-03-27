@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="tmall-activemq-consumer" />
+        <module name="tmall-admin" />
+        <module name="tmall-common" />
+        <module name="tmall-common-interface" />
+        <module name="tmall-content-service-manager" />
+        <module name="tmall-editor-mkdown" />
+        <module name="tmall-freemaker-staticpage-service" />
+        <module name="tmall-front" />
+        <module name="tmall-items-service-manager" />
+        <module name="tmall-keyword-reload-manager" />
+        <module name="tmall-pojo" />
+        <module name="tmall-search-engin-front" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="tmall-activemq-consumer" options="-parameters" />
+      <module name="tmall-admin" options="" />
+      <module name="tmall-content-service-manager" options="" />
+      <module name="tmall-editor-mkdown" options="-parameters" />
+      <module name="tmall-freemaker-staticpage-service" options="" />
+      <module name="tmall-items-service-manager" options="" />
+      <module name="tmall-keyword-reload-manager" options="-parameters" />
+      <module name="tmall-search-engin-front" options="" />
+    </option>
+  </component>
+</project>
